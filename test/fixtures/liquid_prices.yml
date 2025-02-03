@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  material: one
+  price_per_liter: 9.99
+  density: 9.99
+
+two:
+  material: two
+  price_per_liter: 9.99
+  density: 9.99

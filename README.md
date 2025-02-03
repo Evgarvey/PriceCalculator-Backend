@@ -62,7 +62,7 @@ The following endpoints are planned for the initial implementation:
 - `PUT /lists/:id/items/:item_id` - Update item
 - `DELETE /lists/:id/items/:item_id` - Remove item from list
 
-## Database Schema (Draft)
+## Database Schema (Implemented)
 
 ### Users
 ```sql
@@ -85,25 +85,90 @@ shopping_lists
   - updated_at: datetime
 ```
 
-### Items
+### List Items
 ```sql
 list_items
   - id: integer
   - list_id: integer (foreign key)
+  - material_id: integer (foreign key)
+  - quantity: decimal
+  - created_at: datetime
+  - updated_at: datetime
+```
+
+### Material Categories
+```sql
+material_categories
+  - id: integer
   - name: string
-  - price: decimal
-  - quantity: integer
+  - base_unit: string
+  - description: text
+  - created_at: datetime
+  - updated_at: datetime
+```
+
+### Materials
+```sql
+materials
+  - id: integer
+  - name: string
+  - material_category_id: integer (foreign key)
+  - created_at: datetime
+  - updated_at: datetime
+```
+
+### Material Prices by Category
+
+#### Currencies
+```sql
+currency_prices
+  - id: integer
+  - material_id: integer (foreign key)
+  - usd_ratio: decimal
+  - created_at: datetime
+  - updated_at: datetime
+```
+
+#### Common Materials
+```sql
+common_material_prices
+  - id: integer
+  - material_id: integer (foreign key)
+  - price_per_m3: decimal
+  - density: decimal
+  - created_at: datetime
+  - updated_at: datetime
+```
+
+#### Liquids
+```sql
+liquid_prices
+  - id: integer
+  - material_id: integer (foreign key)
+  - price_per_liter: decimal
+  - density: decimal
+  - created_at: datetime
+  - updated_at: datetime
+```
+
+#### Precious Materials
+```sql
+precious_material_prices
+  - id: integer
+  - material_id: integer (foreign key)
+  - price_per_gram: decimal
+  - density: decimal
   - created_at: datetime
   - updated_at: datetime
 ```
 
 ## Development
 
-Currently in initial development phase. The following features are in progress:
+Current development status:
 
+- [x] Set up database models and relationships
 - [ ] Implement user authentication system
 - [ ] Create RESTful API endpoints
-- [ ] Set up database models and relationships
 - [ ] Add request validation
 - [ ] Implement error handling
 - [ ] Add API documentation
