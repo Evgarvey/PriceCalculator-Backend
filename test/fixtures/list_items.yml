@@ -1,11 +1,19 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  list: one
-  material: one
-  quantity: 9.99
+  id: 1
+  shopping_list_id: 1
+  material_id: 1
+  quantity: 1
 
 two:
-  list: two
-  material: two
-  quantity: 9.99
+  id: 2
+  shopping_list_id: 2
+  material_id: 2
+  quantity: 2
+
+three:
+  id: 3
+  shopping_list_id: 3
+  material_id: 1
+  quantity: 3

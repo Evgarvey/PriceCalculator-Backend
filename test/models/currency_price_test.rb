@@ -21,30 +21,18 @@ class CurrencyPriceTest < ActiveSupport::TestCase
     assert_not @currency_price.valid?
   end
 
-  test "should be valid with zero values" do
-    @currency_price.copper = 0
-    @currency_price.silver = 0
-    @currency_price.gold = 0
+  test "should be valid with zero usd ratio" do
+    @currency_price.usd_ratio = 0
     assert @currency_price.valid?
   end
 
-  test "currency values should be non-negative" do
-    @currency_price.copper = -1
-    assert_not @currency_price.valid?
-    
-    @currency_price.copper = 0
-    @currency_price.silver = -1
-    assert_not @currency_price.valid?
-    
-    @currency_price.silver = 0
-    @currency_price.gold = -1
-    assert_not @currency_price.valid?
+  test "should be valid with nil usd ratio" do
+    @currency_price.usd_ratio = nil
+    assert @currency_price.valid?
   end
 
-  test "should be valid with nil values" do
-    @currency_price.copper = nil
-    @currency_price.silver = nil
-    @currency_price.gold = nil
-    assert @currency_price.valid?
+  test "usd ratio should be non-negative when present" do
+    @currency_price.usd_ratio = -1
+    assert_not @currency_price.valid?
   end
 end

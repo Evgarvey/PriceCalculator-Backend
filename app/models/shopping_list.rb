@@ -3,4 +3,6 @@ class ShoppingList < ApplicationRecord
 
   has_many :list_items, dependent: :destroy
   has_many :materials, through: :list_items
+  
+  validates :name, presence: true
 end

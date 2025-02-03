@@ -1,9 +1,17 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  email: MyString
-  password_digest: MyString
+  id: 1
+  email: "user1@example.com"
+  encrypted_password: <%= User.new.send(:password_digest, 'password123') %>
+  reset_password_token: null
+  reset_password_sent_at: null
+  remember_created_at: null
 
 two:
-  email: MyString
-  password_digest: MyString
+  id: 2
+  email: "user2@example.com"
+  encrypted_password: <%= User.new.send(:password_digest, 'password123') %>
+  reset_password_token: null
+  reset_password_sent_at: null
+  remember_created_at: null

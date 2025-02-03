@@ -38,9 +38,9 @@ class UserTest < ActiveSupport::TestCase
     end
   end
 
-  test "password should be present" do
-    @user.password = nil
-    assert_not @user.valid?
+  test "password should be present for new users" do
+    user = User.new(email: "test@example.com")
+    assert_not user.valid?
   end
 
   test "password should have minimum length" do
@@ -50,8 +50,9 @@ class UserTest < ActiveSupport::TestCase
 
   # Dependent destroy test
   test "should destroy associated shopping lists when destroyed" do
+    initial_count = @user.shopping_lists.count
     @user.shopping_lists.create!(name: "Test List")
-    assert_difference('ShoppingList.count', -1) do
+    assert_difference('ShoppingList.count', -(initial_count + 1)) do
       @user.destroy
     end
   end

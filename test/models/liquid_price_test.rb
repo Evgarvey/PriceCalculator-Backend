@@ -21,33 +21,33 @@ class LiquidPriceTest < ActiveSupport::TestCase
     assert_not @liquid_price.valid?
   end
 
-  test "should be valid with zero price per unit" do
-    @liquid_price.price_per_unit = 0
+  test "should be valid with zero price per liter" do
+    @liquid_price.price_per_liter = 0
     assert @liquid_price.valid?
   end
 
-  test "should be valid with nil price per unit" do
-    @liquid_price.price_per_unit = nil
+  test "should be valid with nil price per liter" do
+    @liquid_price.price_per_liter = nil
     assert @liquid_price.valid?
   end
 
-  test "price per unit should be non-negative when present" do
-    @liquid_price.price_per_unit = -1
+  test "price per liter should be non-negative when present" do
+    @liquid_price.price_per_liter = -1
     assert_not @liquid_price.valid?
   end
 
-  test "should be valid with zero unit size" do
-    @liquid_price.unit_size = 0
+  test "should be valid with zero density" do
+    @liquid_price.density = 0
     assert @liquid_price.valid?
   end
 
-  test "should be valid with nil unit size" do
-    @liquid_price.unit_size = nil
+  test "should be valid with nil density" do
+    @liquid_price.density = nil
     assert @liquid_price.valid?
   end
 
-  test "unit size should be non-negative when present" do
-    @liquid_price.unit_size = -1
+  test "density should be non-negative when present" do
+    @liquid_price.density = -1
     assert_not @liquid_price.valid?
   end
 end

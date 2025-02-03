@@ -1,11 +1,13 @@
 # Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  material: one
-  price_per_gram: 9.99
-  density: 9.99
+  id: 1
+  material_id: 1
+  price_per_gram: 50.0
+  density: 19.32
 
 two:
-  material: two
-  price_per_gram: 9.99
-  density: 9.99
+  id: 2
+  material_id: 2
+  price_per_gram: 30.0
+  density: 10.49

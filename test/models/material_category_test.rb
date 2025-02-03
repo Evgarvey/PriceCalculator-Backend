@@ -1,6 +1,8 @@
 require "test_helper"
 
 class MaterialCategoryTest < ActiveSupport::TestCase
+  fixtures :material_categories, :materials
+  
   setup do
     @material_category = material_categories(:one)
   end
@@ -20,13 +22,13 @@ class MaterialCategoryTest < ActiveSupport::TestCase
 
   test "name should be unique" do
     duplicate_category = @material_category.dup
-    @material_category.save
     assert_not duplicate_category.valid?
   end
 
   test "should destroy associated materials when destroyed" do
+    initial_count = @material_category.materials.count
     @material_category.materials.create!(name: "Test Material")
-    assert_difference('Material.count', -1) do
+    assert_difference('Material.count', -(initial_count + 1)) do
       @material_category.destroy
     end
   end

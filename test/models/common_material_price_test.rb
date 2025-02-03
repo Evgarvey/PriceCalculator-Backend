@@ -21,18 +21,18 @@ class CommonMaterialPriceTest < ActiveSupport::TestCase
     assert_not @common_price.valid?
   end
 
-  test "should be valid with zero price" do
-    @common_price.price = 0
+  test "should be valid with zero price per m3" do
+    @common_price.price_per_m3 = 0
     assert @common_price.valid?
   end
 
-  test "should be valid with nil price" do
-    @common_price.price = nil
+  test "should be valid with nil price per m3" do
+    @common_price.price_per_m3 = nil
     assert @common_price.valid?
   end
 
-  test "price should be non-negative when present" do
-    @common_price.price = -1
+  test "price per m3 should be non-negative when present" do
+    @common_price.price_per_m3 = -1
     assert_not @common_price.valid?
   end
 end

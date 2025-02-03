@@ -36,7 +36,6 @@ class ShoppingListTest < ActiveSupport::TestCase
 
   # Dependent destroy test
   test "should destroy associated list items when destroyed" do
-    @shopping_list.list_items.create!(material: materials(:one), quantity: 1)
     assert_difference('ListItem.count', -1) do
       @shopping_list.destroy
     end

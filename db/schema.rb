@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_03_173012) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_03_180255) do
   create_table "common_material_prices", force: :cascade do |t|
     t.integer "material_id", null: false
     t.decimal "price_per_m3"
@@ -38,13 +38,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_173012) do
   end
 
   create_table "list_items", force: :cascade do |t|
-    t.integer "list_id", null: false
+    t.integer "shopping_list_id", null: false
     t.integer "material_id", null: false
-    t.decimal "quantity"
+    t.integer "quantity"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["list_id"], name: "index_list_items_on_list_id"
     t.index ["material_id"], name: "index_list_items_on_material_id"
+    t.index ["shopping_list_id"], name: "index_list_items_on_shopping_list_id"
   end
 
   create_table "material_categories", force: :cascade do |t|
@@ -97,8 +97,8 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_173012) do
   add_foreign_key "common_material_prices", "materials"
   add_foreign_key "currency_prices", "materials"
   add_foreign_key "liquid_prices", "materials"
-  add_foreign_key "list_items", "lists"
   add_foreign_key "list_items", "materials"
+  add_foreign_key "list_items", "shopping_lists"
   add_foreign_key "materials", "material_categories"
   add_foreign_key "precious_material_prices", "materials"
   add_foreign_key "shopping_lists", "users"

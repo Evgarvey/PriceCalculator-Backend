@@ -1,6 +1,8 @@
 require "test_helper"
 
 class MaterialTest < ActiveSupport::TestCase
+  fixtures :materials, :material_categories
+  
   setup do
     @material = materials(:one)
   end
@@ -43,8 +45,9 @@ class MaterialTest < ActiveSupport::TestCase
   end
 
   test "should destroy associated list items when destroyed" do
-    @material.list_items.create!(quantity: 1, shopping_list: shopping_lists(:one))
-    assert_difference('ListItem.count', -1) do
+    initial_count = @material.list_items.count
+    new_list_item = @material.list_items.create!(quantity: 1, shopping_list: shopping_lists(:one))
+    assert_difference('ListItem.count', -(initial_count + 1)) do
       @material.destroy
     end
   end
