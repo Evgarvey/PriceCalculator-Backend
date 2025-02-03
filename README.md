@@ -19,7 +19,7 @@ Backend API service for the Billionaire Shopping Spree Calculator web applicatio
 - Ruby on Rails
 - SQLite database
 - Active Record ORM
-- JWT for authentication
+- Devise for authentication
 - BCrypt for password hashing
 
 ## Setup
@@ -35,7 +35,10 @@ Backend API service for the Billionaire Shopping Spree Calculator web applicatio
    rails db:create
    rails db:migrate
    ```
-5. Start the server:
+5. Configure Devise:
+   - Check config/initializers/devise.rb for custom settings
+   - Set up mailer in config/environments/development.rb
+6. Start the server:
    ```bash
    rails server
    ```
@@ -167,16 +170,22 @@ precious_material_prices
 Current development status:
 
 - [x] Set up database models and relationships
-- [ ] Implement user authentication system
+- [x] Implement user authentication system (using Devise)
+- [x] Set up testing environment
 - [ ] Create RESTful API endpoints
 - [ ] Add request validation
 - [ ] Implement error handling
 - [ ] Add API documentation
-- [ ] Set up testing environment
 - [ ] Add rate limiting
 - [ ] Implement CORS configuration
 
 ## Testing
+
+The project includes comprehensive test suites for all models:
+- User authentication
+- Material categories and materials
+- Shopping lists and list items
+- Price models (Currency, Common, Liquid, Precious)
 
 Run the test suite:
 ```bash
