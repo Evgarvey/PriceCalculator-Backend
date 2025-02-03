@@ -45,3 +45,7 @@
 .vscode/
 *.swp
 *.swo
+
+# Ignore metal prices data files but keep directories
+data/metal_prices/*.json
+data/metal_prices/archive/*.json
