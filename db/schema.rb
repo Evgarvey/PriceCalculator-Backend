@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_02_03_180255) do
+ActiveRecord::Schema[8.0].define(version: 2025_02_04_185104) do
   create_table "common_material_prices", force: :cascade do |t|
     t.integer "material_id", null: false
     t.decimal "price_per_m3"
@@ -72,6 +72,15 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_180255) do
     t.index ["material_id"], name: "index_precious_material_prices_on_material_id"
   end
 
+  create_table "prices", force: :cascade do |t|
+    t.integer "material_id", null: false
+    t.decimal "price_per_unit", precision: 20, scale: 6
+    t.decimal "density", precision: 10, scale: 4
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["material_id"], name: "index_prices_on_material_id"
+  end
+
   create_table "shopping_lists", force: :cascade do |t|
     t.integer "user_id", null: false
     t.string "name"
@@ -101,5 +110,6 @@ ActiveRecord::Schema[8.0].define(version: 2025_02_03_180255) do
   add_foreign_key "list_items", "shopping_lists"
   add_foreign_key "materials", "material_categories"
   add_foreign_key "precious_material_prices", "materials"
+  add_foreign_key "prices", "materials"
   add_foreign_key "shopping_lists", "users"
 end
