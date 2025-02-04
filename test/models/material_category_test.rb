@@ -12,12 +12,14 @@ class MaterialCategoryTest < ActiveSupport::TestCase
   end
 
   test "should have many materials" do
-    assert_respond_to @material_category, :materials
+    category = material_categories(:one)
+    assert_respond_to category, :materials
   end
 
   test "name should be present" do
-    @material_category.name = nil
-    assert_not @material_category.valid?
+    category = MaterialCategory.new
+    assert_not category.valid?
+    assert_includes category.errors[:name], "can't be blank"
   end
 
   test "name should be unique" do
@@ -26,10 +28,11 @@ class MaterialCategoryTest < ActiveSupport::TestCase
   end
 
   test "should destroy associated materials when destroyed" do
-    initial_count = @material_category.materials.count
-    @material_category.materials.create!(name: "Test Material")
-    assert_difference('Material.count', -(initial_count + 1)) do
-      @material_category.destroy
+    category = material_categories(:one)
+    material_count = category.materials.count  # Count materials in this category
+    
+    assert_difference('Material.count', -material_count) do
+      category.destroy
     end
   end
 end

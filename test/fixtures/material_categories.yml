@@ -8,4 +8,4 @@ one:
 two:
   id: 2
   name: "Common Materials"
-  base_unit: "kilogram"
+  base_unit: "gram"

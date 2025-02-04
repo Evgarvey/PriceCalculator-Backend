@@ -12,5 +12,5 @@ two:
 
 three:
   id: 3
-  name: "Bronze"
+  name: "Copper"
   material_category_id: 2

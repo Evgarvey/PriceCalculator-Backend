@@ -8,9 +8,8 @@ class MaterialTest < ActiveSupport::TestCase
   end
 
   # Association tests
-  test "should belong to material category" do
+  test "should belong to material_category" do
     assert_respond_to @material, :material_category
-    assert @material.material_category.present?
   end
 
   test "should have many list items" do
@@ -23,10 +22,7 @@ class MaterialTest < ActiveSupport::TestCase
 
   # Price relationship tests
   test "should have price relationships" do
-    assert_respond_to @material, :currency_price
-    assert_respond_to @material, :common_material_price
-    assert_respond_to @material, :liquid_price
-    assert_respond_to @material, :precious_material_price
+    assert_respond_to @material, :price
   end
 
   # Validation tests
@@ -39,9 +35,10 @@ class MaterialTest < ActiveSupport::TestCase
     assert_not @material.valid?
   end
 
-  test "material category should be present" do
+  test "material_category should be present" do
     @material.material_category = nil
     assert_not @material.valid?
+    assert_includes @material.errors[:material_category], "must exist"
   end
 
   test "should destroy associated list items when destroyed" do

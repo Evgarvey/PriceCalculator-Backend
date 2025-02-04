@@ -1,0 +1,14 @@
+one:
+  id: 1
+  material_id: 1
+  price_per_unit: 1900.50
+
+two:
+  id: 2
+  material_id: 2
+  price_per_unit: 23.50
+
+three:
+  id: 3
+  material_id: 3
+  price_per_unit: 3.75 
