@@ -1,0 +1,148 @@
+{
+  "type": "metals",
+  "base_unit": "gram",
+  "category_name": "Metals",
+  "conversions": {
+    "troy_ounce": 31.1035,
+    "ounce": 28.3495,
+    "pound": 453.592
+  },
+  "materials": {
+    "XAU": {
+      "name": "Gold",
+      "unit": "ounce"
+    },
+    "XAG": {
+      "name": "Silver",
+      "unit": "ounce"
+    },
+    "XPT": {
+      "name": "Platinum",
+      "unit": "ounce"
+    },
+    "XPD": {
+      "name": "Palladium",
+      "unit": "ounce"
+    },
+    "XCU": {
+      "name": "Copper",
+      "unit": "ounce"
+    },
+    "XRH": {
+      "name": "Rhodium",
+      "unit": "ounce"
+    },
+    "ALU": {
+      "name": "Aluminum",
+      "unit": "troy_ounce"
+    },
+    "ZNC": {
+      "name": "Zinc",
+      "unit": "troy_ounce"
+    },
+    "TIN": {
+      "name": "Tin",
+      "unit": "ounce"
+    },
+    "BRASS": {
+      "name": "Brass",
+      "unit": "troy_ounce"
+    },
+    "BRONZE": {
+      "name": "Bronze",
+      "unit": "troy_ounce"
+    },
+    "INDIUM": {
+      "name": "Indium",
+      "unit": "troy_ounce"
+    },
+    "MG": {
+      "name": "Magnesium",
+      "unit": "troy_ounce"
+    },
+    "MO": {
+      "name": "Molybdenum",
+      "unit": "troy_ounce"
+    },
+    "OSMIUM": {
+      "name": "Osmium",
+      "unit": "troy_ounce"
+    },
+    "RHENIUM": {
+      "name": "Rhenium",
+      "unit": "troy_ounce"
+    },
+    "TUNGSTEN": {
+      "name": "Tungsten",
+      "unit": "troy_ounce"
+    },
+    "URANIUM": {
+      "name": "Uranium",
+      "unit": "pound"
+    },
+    "GALLIUM": {
+      "name": "Gallium",
+      "unit": "ounce"
+    },
+    "IRD": {
+      "name": "Iridium",
+      "unit": "ounce"
+    },
+    "IRON": {
+      "name": "Iron",
+      "unit": "ounce"
+    },
+    "LEAD": {
+      "name": "Lead",
+      "unit": "ounce"
+    },
+    "ND": {
+      "name": "Neodymium",
+      "unit": "ounce"
+    },
+    "NI": {
+      "name": "Nickel",
+      "unit": "ounce"
+    },
+    "RUTH": {
+      "name": "Ruthenium",
+      "unit": "ounce"
+    },
+    "TE": {
+      "name": "Tellurium",
+      "unit": "ounce"
+    },
+    "TITANIUM": {
+      "name": "Titanium",
+      "unit": "ounce"
+    },
+    "DYS": {
+      "name": "Dysprosium",
+      "unit": "ounce"
+    },
+    "GER": {
+      "name": "Germanium",
+      "unit": "ounce"
+    },
+    "HAF": {
+      "name": "Hafnium",
+      "unit": "ounce"
+    },
+    "LTH": {
+      "name": "Lanthanum",
+      "unit": "ounce"
+    },
+    "PRA": {
+      "name": "Praseodymium",
+      "unit": "ounce"
+    },
+    "TER": {
+      "name": "Terbium",
+      "unit": "ounce"
+    },
+    "BMTH": {
+      "name": "Bismuth",
+      "unit": "ounce"
+    }
+  }
+} 
