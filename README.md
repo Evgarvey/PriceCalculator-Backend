@@ -72,7 +72,10 @@ The following endpoints are planned for the initial implementation:
 users
   - id: integer
   - email: string
-  - password_digest: string
+  - encrypted_password: string
+  - reset_password_token: string
+  - reset_password_sent_at: datetime
+  - remember_created_at: datetime
   - created_at: datetime
   - updated_at: datetime
 ```
@@ -92,9 +95,9 @@ shopping_lists
 ```sql
 list_items
   - id: integer
-  - list_id: integer (foreign key)
+  - shopping_list_id: integer (foreign key)
   - material_id: integer (foreign key)
-  - quantity: decimal
+  - quantity: integer
   - created_at: datetime
   - updated_at: datetime
 ```
@@ -120,46 +123,12 @@ materials
   - updated_at: datetime
 ```
 
-### Material Prices by Category
-
-#### Currencies
+### Prices
 ```sql
-currency_prices
+prices
   - id: integer
   - material_id: integer (foreign key)
-  - usd_ratio: decimal
-  - created_at: datetime
-  - updated_at: datetime
-```
-
-#### Common Materials
-```sql
-common_material_prices
-  - id: integer
-  - material_id: integer (foreign key)
-  - price_per_m3: decimal
-  - density: decimal
-  - created_at: datetime
-  - updated_at: datetime
-```
-
-#### Liquids
-```sql
-liquid_prices
-  - id: integer
-  - material_id: integer (foreign key)
-  - price_per_liter: decimal
-  - density: decimal
-  - created_at: datetime
-  - updated_at: datetime
-```
-
-#### Precious Materials
-```sql
-precious_material_prices
-  - id: integer
-  - material_id: integer (foreign key)
-  - price_per_gram: decimal
+  - price_per_unit: decimal
   - density: decimal
   - created_at: datetime
   - updated_at: datetime
@@ -185,7 +154,7 @@ The project includes comprehensive test suites for all models:
 - User authentication
 - Material categories and materials
 - Shopping lists and list items
-- Price models (Currency, Common, Liquid, Precious)
+- Price model
 
 Run the test suite:
 ```bash

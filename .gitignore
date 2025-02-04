@@ -4,18 +4,69 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
-# Ignore bundler config.
+# Ignore bundler config
 /.bundle
 
-# Ignore the default SQLite database.
-/db/*.sqlite3
-/db/*.sqlite3-*
-
-# Ignore all logfiles and tempfiles.
+# Ignore all logfiles and tempfiles
 /log/*
 /tmp/*
 !/log/.keep
 !/tmp/.keep
+
+# Ignore pidfiles
+/tmp/pids/*
+!/tmp/pids/
+!/tmp/pids/.keep
+
+# Ignore uploaded files in development
+/storage/*
+!/storage/.keep
+/tmp/storage/*
+!/tmp/storage/
+!/tmp/storage/.keep
+
+# Ignore master key for decrypting credentials
+/config/master.key
+
+# Ignore database configuration
+/config/database.yml
+
+# Ignore environment variables
+.env
+.env.*
+
+# Ignore test coverage
+/coverage/*
+
+# Ignore node modules
+/node_modules
+
+# Ignore yarn files
+/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore Mac system files
+.DS_Store
+
+# Ignore RubyMine project files
+.idea/
+
+# Ignore VSCode project files
+.vscode/
+
+# Ignore public uploads
+/public/uploads
+
+# Ignore precompiled assets
+/public/assets
+
+# Ignore redis dump file
+dump.rdb
+
+# Ignore the default SQLite database.
+/db/*.sqlite3
+/db/*.sqlite3-*
 
 # Ignore pidfiles, but keep the directory.
 /tmp/pids/*
@@ -27,18 +78,8 @@
 !/storage/.keep
 .byebug_history
 
-# Ignore master key for decrypting credentials and more.
-/config/master.key
-
-# Environment files
-.env
-.env.*
-
 # SQLite journal files
 *.sqlite3-journal
-
-# macOS system files
-.DS_Store
 
 # Editor files
 .idea/
@@ -47,5 +88,5 @@
 *.swo
 
 # Ignore metal prices data files but keep directories
-data/metal_prices/*.json
-data/metal_prices/archive/*.json
+data/prices/*.json
+data/prices/archive/*.json
