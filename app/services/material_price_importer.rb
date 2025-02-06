@@ -80,7 +80,14 @@ class MaterialPriceImporter
   def display_prices
     puts "\nCurrent #{@config['category_name']} Prices:"
     puts "----------------------------------------"
-    puts "Material             |  Price per #{@config['base_unit']}"
+    
+    # Custom header for currencies
+    if @config["type"] == "currency"
+      puts "Material             |  $1 USD equivalent"
+    else
+      puts "Material             |  Price per #{@config['base_unit']}"
+    end
+    
     puts "----------------------------------------"
 
     # Join with material_categories and prices tables
@@ -90,7 +97,8 @@ class MaterialPriceImporter
            .each do |material|
       puts sprintf("%-20s| %10.2f", material.name, material.price.price_per_unit)
     end
-    puts "----------------------------------------"  # Added footer line
-    puts #newline because I am a fan of spacing
+    
+    puts "----------------------------------------"
+    puts
   end
 end 
