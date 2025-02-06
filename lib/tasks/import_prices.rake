@@ -28,18 +28,52 @@ namespace :prices do
       latest_file = json_files.max_by { |f| File.mtime(f) }
       puts "Processing #{latest_file}..."
 
+      # Material type selection
+      puts "\nSelect Material Type:"
+      puts "[M] Materials"
+      puts "[L] Liquids"
+      puts "[P] Precious Metals"
+      puts "[C] Currency"
+      print "\nChoice: "
+      
+      choice = STDIN.gets.chomp.upcase
+      config_type = case choice
+        when 'M' then 'materials'
+        when 'L' then 'liquids'
+        when 'P' then 'precious_metals'
+        when 'C' then 'currency'
+        else
+          puts "Invalid choice!"
+          exit
+      end
+
       # Validate JSON structure
       begin
         json_data = File.read(latest_file)
         parsed_data = JSON.parse(json_data)
         
-        # Check required JSON structure
-        unless parsed_data["data"] && 
-               parsed_data["data"]["rates"] && 
-               parsed_data["data"]["rates"].any? { |k, _| k.start_with?("USD") }
-          puts "Error: Invalid JSON structure"
-          puts "Expected format:"
-          puts '{
+        # Check required JSON structure based on file type
+        if choice == 'C'
+          unless parsed_data["conversion_rates"]
+            puts "Error: Invalid JSON structure for currency"
+            puts "Expected format:"
+            puts '{
+  "conversion_rates": {
+    "EUR": 0.97,
+    "GBP": 0.81,
+    ...
+  }
+}'
+            exit
+          end
+        else
+          # Original metals validation
+          unless parsed_data["data"] && 
+                 parsed_data["data"]["rates"] && 
+                 parsed_data["data"]["rates"].any? { |k, _| k.start_with?("USD") }
+            puts "Error: Invalid JSON structure for metals"
+            puts "Expected format:"
+            puts '{
   "data": {
     "rates": {
       "USD[CODE]": 1234.56,
@@ -47,26 +81,8 @@ namespace :prices do
     }
   }
 }'
-          exit
-        end
-
-        # Material type selection
-        puts "\nSelect Material Type:"
-        puts "[M] Materials"
-        puts "[L] Liquids"
-        puts "[P] Precious Metals"
-        puts "[C] Currency"
-        print "\nChoice: "
-        
-        choice = STDIN.gets.chomp.upcase
-        config_type = case choice
-          when 'M' then 'materials'
-          when 'L' then 'liquids'
-          when 'P' then 'precious_metals'
-          when 'C' then 'currency'
-          else
-            puts "Invalid choice!"
             exit
+          end
         end
 
         # Load and validate config
