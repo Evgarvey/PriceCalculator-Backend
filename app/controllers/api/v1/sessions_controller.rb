@@ -27,6 +27,25 @@ module Api
         end
       end
 
+      # GET /api/v1/check_auth
+      def check_auth
+        if current_user
+          render json: {
+            status: { code: 200, message: 'User is authenticated.' },
+            data: {
+              user: {
+                id: current_user.id,
+                email: current_user.email
+              }
+            }
+          }
+        else
+          render json: {
+            status: { code: 401, message: 'User is not authenticated.' }
+          }, status: :unauthorized
+        end
+      end
+
       # DELETE /api/v1/logout
       def destroy
         if current_user
