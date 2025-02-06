@@ -32,9 +32,13 @@ module Api
     # config.eager_load_paths << Rails.root.join("extras")
 
     # Only loads a smaller set of middleware suitable for API only apps.
-    # Middleware like session, flash, cookies can be added back manually.
-    # Skip views, helpers and assets when generating a new resource.
+    # Middleware like session, flash, cookies are not enabled by default.
     config.api_only = true
+
+    # Enable sessions for API
+    config.session_store :cookie_store, key: '_api_session'
+    config.middleware.use ActionDispatch::Cookies
+    config.middleware.use config.session_store, config.session_options
 
     # Add this line to opt into the new behavior
     config.active_support.to_time_preserves_timezone = :zone

@@ -11,3 +11,11 @@ class ActiveSupport::TestCase
 
   # Add more helper methods to be used by all tests here...
 end
+
+class ActionDispatch::IntegrationTest
+  include Devise::Test::IntegrationHelpers
+end
+
+# Show full error reports in test output
+Rails.application.config.action_dispatch.show_detailed_exceptions = true
+Rails.application.config.consider_all_requests_local = true
